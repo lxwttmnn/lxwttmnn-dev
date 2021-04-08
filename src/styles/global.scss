@@ -1,0 +1,51 @@
+/* Customization of some Bootstrap defaults */
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+  "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+$primary-color: #00c6cf;
+
+$theme-colors: (
+  "primary": $primary-color,
+);
+
+$body-bg: #151414;
+$body-color: #ffffff;
+
+$navbar-dark-color: $body-color;
+$navbar-dark-hover-color: $primary-color;
+$navbar-dark-active-color: $primary-color;
+$navbar-dark-brand-color: $body-color;
+$navbar-dark-brand-hover-color: $body-color;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+/* Overriding of some Bootstrap defaults */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand>img {
+  padding: 7px 14px;
+}
+
+/* Custom styles */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+}

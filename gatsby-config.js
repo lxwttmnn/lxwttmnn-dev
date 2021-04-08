@@ -1,11 +1,36 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    siteUrl: "https://www.awittmann.io",
+    title: "Alexander Wittmann",
+    jobTitle: "Full-Stack Developer (Angular & Spring)",
+    description: `Alexander Wittmann - ${this.jobTitle}`,
+    navigationLinks: [
+      { url: "/", name: "Home" },
+      { url: "/about/", name: "About" },
+      { url: "/contact/", name: "Contact" },
+    ],
+    contacts: [
+      {
+        name: "Email",
+        url: "mailto:awittmann@outlook.com",
+      },
+      {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/alexander-wittmann-9a9887a9",
+      },
+      {
+        name: "Twitter",
+        url: "https://twitter.com/lxwttmnn",
+      },
+      {
+        name: "GitHub",
+        url: "https://github.com/lxwttmnn",
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-sass",
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -16,21 +41,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-gatsby-cloud`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-transformer-remark",
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        plugins: ["gatsby-remark-prismjs"],
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

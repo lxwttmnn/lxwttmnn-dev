@@ -1,29 +1,40 @@
-import * as React from "react"
+import React from "react"
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { Button } from "reactstrap"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
+import Page from "../components/page"
+import ImageSrc from "../images/index.svg"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+export default function IndexPage({ children, location }) {
+  const { jobTitle } = useSiteMetadata()
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
-
-export default IndexPage
+  return (
+    <Page
+      children={children}
+      location={location}
+      imageSrc={ImageSrc}
+      headerText="Hi, I'm Alex."
+    >
+      <p>
+        I help individuals and companies of any size to stay competitive in
+        today's fast-changing world through modern technology and quality
+        software. I'm a highly experienced {jobTitle} with a passion for new
+        technology and continual learning. Let's get in touch to discuss how we
+        can work together.
+      </p>
+      <p>
+        <Button outline color="primary" className="btn-lg">
+          <Link to="/contact/" className="text-primary text-decoration-none">
+            Get in touch
+          </Link>
+        </Button>
+        &nbsp;&nbsp;&nbsp;
+        <Button outline color="primary" className="btn-lg">
+          <Link to="/contact/" className="text-primary text-decoration-none">
+            Request CV
+          </Link>
+        </Button>
+      </p>
+    </Page>
+  )
+}

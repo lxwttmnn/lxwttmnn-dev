@@ -1,42 +1,48 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import React, { useState } from "react"
+import {
+  Container,
+  Collapse,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Nav,
+  NavItem,
+} from "reactstrap"
+
 import { Link } from "gatsby"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
+import logo from "../images/logo-dark-theme.png"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+export default function Header({ location }) {
+  const [collapsed, setCollapsed] = useState(false)
+  const { navigationLinks } = useSiteMetadata()
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+  function clickHandler() {
+    setCollapsed(!collapsed)
+  }
+
+  return (
+    <Navbar dark expand="md">
+      <Container fluid>
+        <NavbarBrand className="mr-auto">Alexander Wittmann</NavbarBrand>
+        <NavbarToggler onClick={clickHandler} className="mr-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav className="ml-auto" navbar>
+            {navigationLinks.map(navigationLink => (
+              <NavItem
+                key={navigationLink.name}
+                className={
+                  location.pathname === navigationLink.url ? "active" : ""
+                }
+              >
+                <Link to={navigationLink.url} className="nav-link">
+                  {navigationLink.name}
+                </Link>
+              </NavItem>
+            ))}
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
+  )
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
