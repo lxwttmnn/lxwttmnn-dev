@@ -14,7 +14,7 @@ import { useSiteMetadata } from "../hooks/use-site-metadata"
 import logo from "../images/logo-dark-theme.png"
 
 export default function Header({ location }) {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
   const { navigationLinks } = useSiteMetadata()
 
   function clickHandler() {
